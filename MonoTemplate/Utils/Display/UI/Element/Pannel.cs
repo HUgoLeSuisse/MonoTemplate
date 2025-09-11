@@ -9,9 +9,9 @@ namespace MonoTemplate.Utils.Display.UI.Element
     /// <summary>
     /// Element contenant d'autres elements
     /// </summary>
-    public class UI_Pannel : UI_Element
+    public class Pannel : Element
     {
-        private List<UI_Element> childrens = new List<UI_Element>();
+        private List<Element> childrens = new List<Element>();
 
         /// <summary>
         /// 
@@ -19,7 +19,7 @@ namespace MonoTemplate.Utils.Display.UI.Element
         /// <param name="rect">Rectangle relatif à la Position du parent</param>
         /// <param name="color">Couleur de l'element(par defaut blanc)</param>
         /// <param name="texture">TextureBG de l'element (par defaut 1x1 blanc)</param>
-        public UI_Pannel(Rectangle rect, Color? color, Texture2D image) : base(rect, color, image)
+        public Pannel(Rectangle rect, Color? color, Texture2D image) : base(rect, color, image)
         {
         }
 
@@ -27,7 +27,7 @@ namespace MonoTemplate.Utils.Display.UI.Element
         /// Obtient un tableau avec tous les enfants du panneau
         /// </summary>
         /// <returns></returns>
-        public UI_Element[] GetChilds()
+        public Element[] GetChilds()
         {
             return childrens.ToArray();
         }
@@ -36,7 +36,7 @@ namespace MonoTemplate.Utils.Display.UI.Element
         /// Permet d'ajouter un enfant
         /// </summary>
         /// <param name="child"></param>
-        public void Add(UI_Element child)
+        public void Add(Element child)
         {
             childrens.Add(child);
             child.Parent = this;
@@ -51,7 +51,7 @@ namespace MonoTemplate.Utils.Display.UI.Element
             v.Visit(this);
         }
 
-        public void Remove(UI_Element uI_Element)
+        public void Remove(Element uI_Element)
         {
             childrens.Remove(uI_Element);
         }

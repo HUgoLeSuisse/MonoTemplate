@@ -9,20 +9,18 @@ namespace MonoTemplate.Utils.Display.UI
     /// <summary>
     /// Permet de géré une interface utilisateur
     /// </summary>
-    public abstract class UI_Manager : ICleanable
+    public abstract class UserInterface : ICleanable
     {
         protected DisplayUtils displayUtils;
-        protected Camera _cam;
 
         /// <summary>
         /// Ensemble des éléments contenant l'interface
         /// </summary>
-        protected UI_Pannel content;
+        protected Pannel content;
 
-        protected UI_Manager(Camera cam)
+        protected UserInterface(Camera cam)
         {
             displayUtils = DisplayUtils.Instance;
-            _cam = cam;
         }
 
 
@@ -30,7 +28,7 @@ namespace MonoTemplate.Utils.Display.UI
         /// Permet d'obtenir l'ensemble des élements
         /// </summary>
         /// <returns>L'ensemble des élements</returns>
-        public virtual UI_Pannel GetContent()
+        public virtual Pannel GetContent()
         {
             return content;
         }

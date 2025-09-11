@@ -1,2 +1,2 @@
-﻿using var game = new MonoTemplate.Display();
+﻿using var game = new MonoTemplate.Main();
 game.Run();

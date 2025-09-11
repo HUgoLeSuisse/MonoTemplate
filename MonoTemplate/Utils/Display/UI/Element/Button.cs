@@ -10,7 +10,7 @@ namespace MonoTemplate.Utils.Display.UI.Element
     /// <summary>
     /// Element d'interface avec un event quand on clique dessus
     /// </summary>
-    public class UI_Button : UI_Element
+    public class Button : Element
     {
         private Timer timePressed;
         private bool isEnabled = true;
@@ -19,7 +19,7 @@ namespace MonoTemplate.Utils.Display.UI.Element
         private Color overColor;
         private Color pressedColor;
         private Color disabledColor;
-        public UI_Label label;
+        public Label label;
 
         public bool IsEnabled
         {
@@ -38,7 +38,7 @@ namespace MonoTemplate.Utils.Display.UI.Element
             }
         }
 
-        public UI_Button(
+        public Button(
             Point position = new Point(),
             Point size = new Point(),
             string text = "",
@@ -52,7 +52,7 @@ namespace MonoTemplate.Utils.Display.UI.Element
 ,
             Color disabledColor = default) : base(new Rectangle(position,size),color, texture)
         {
-            label = new UI_Label(position, text, fontSize, color, texture, fontColor, font);
+            label = new Label(position, text, fontSize, color, texture, fontColor, font);
             
             this.overColor = overColor;
             this.pressedColor = pressedColor;

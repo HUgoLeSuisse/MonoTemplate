@@ -1,13 +1,14 @@
-﻿
+﻿using Monotemplate.Utils.Display;
 using MonoTemplate.Utils.Display.UI;
 
-namespace MonoTemplate.Utils.Display.Scene
+namespace MonoTemplate.Utils.Display
 {
 
     public class DisplayManager
     {
         private DisplayManager instance;
 
+        private Camera _cam;
         public DisplayManager Instance
         {
             get
@@ -20,7 +21,7 @@ namespace MonoTemplate.Utils.Display.Scene
 
 
         private Scene scene;
-        private UI_Manager ui;
+        private UserInterface ui;
 
 
         private DisplayManager() 

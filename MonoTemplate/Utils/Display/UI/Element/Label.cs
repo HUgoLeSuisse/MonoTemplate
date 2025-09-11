@@ -9,7 +9,7 @@ namespace MonoTemplate.Utils.Display.UI.Element
     /// <summary>
     /// Element d'une interface utilisateur avec du text
     /// </summary>
-    public class UI_Label : UI_Element
+    public class Label : Element
     {
         public string text { get; set; }
         public SpriteFont font { get; set; }
@@ -26,7 +26,7 @@ namespace MonoTemplate.Utils.Display.UI.Element
         /// <param name="image">Image du fond (par defaut 1x1 blanc)</param>
         /// <param name="fontColor">Couleur du text (par defaut transparent)</param>
         /// <param name="font">Police </param>
-        public UI_Label(
+        public Label(
             Point position = new Point(),
             string text = "",
             float fontSize = 1,

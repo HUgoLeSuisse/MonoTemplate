@@ -9,6 +9,9 @@ namespace MonoTemplate.Utils.Display.Scene
 {
     public class Scene
     {
+        public Scene() 
+        { 
 
+        }
     }
 }

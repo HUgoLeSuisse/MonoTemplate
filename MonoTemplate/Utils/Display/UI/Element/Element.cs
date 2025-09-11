@@ -9,11 +9,11 @@ namespace MonoTemplate.Utils.Display.UI.Element
     /// <summary>
     /// Element d'interface utilisateur
     /// </summary>
-    public class UI_Element : IVisible, ICleanable
+    public class Element : IVisible, ICleanable
     {
         protected DisplayUtils displayUtils;
 
-        private UI_Pannel parent;
+        private Pannel parent;
 
         private Rectangle rectRelative;
         private Color color;
@@ -22,7 +22,7 @@ namespace MonoTemplate.Utils.Display.UI.Element
         /// <summary>
         /// Pannaux dans lequel il est contenu
         /// </summary>
-        public UI_Pannel Parent { get { return parent; } set { parent = value; } }
+        public Pannel Parent { get { return parent; } set { parent = value; } }
 
         /// <summary>
         /// Rectangle absolue à la Position du parent
@@ -141,7 +141,7 @@ namespace MonoTemplate.Utils.Display.UI.Element
         /// <param name="rect">Rectangle relatif à la Position du parent</param>
         /// <param name="color">Couleur de l'element</param>
         /// <param name="texture">TextureBG de l'element (par defaut 1x1 blanc)</param>
-        public UI_Element(Rectangle rect, Color? color, Texture2D texture)
+        public Element(Rectangle rect, Color? color, Texture2D texture)
         {
             displayUtils = DisplayUtils.Instance;
             Relative = rect;

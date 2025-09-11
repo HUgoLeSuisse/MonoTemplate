@@ -3,19 +3,21 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Monotemplate.Utils.Display;
+using MonoTemplate.Utils.Display;
 
 namespace MonoTemplate;
 
-public class Display : Game, IVisibleVisitor
+public class Main : Game, IVisibleVisitor
 {
     private DisplayUtils displayUtils;
     private UpdateEvents events;
-    private Camera _cam;
+    private DisplayManager _displayManager;
+
 
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
-    public Display()
+    public Main()
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
@@ -33,7 +35,6 @@ public class Display : Game, IVisibleVisitor
 
 
         displayUtils.SetContent(Content);
-        //displayUtils.graphics = GraphicsDevice;
 
         displayUtils.blank = new Texture2D(GraphicsDevice, 1, 1);
         Color[] colorData = { Color.White };
@@ -47,7 +48,6 @@ public class Display : Game, IVisibleVisitor
         _graphics.IsFullScreen = false;
 
         _graphics.ApplyChanges();
-        _cam = Camera.Instance;
 
     }
 
@@ -74,13 +74,6 @@ public class Display : Game, IVisibleVisitor
     {
         GraphicsDevice.Clear(Color.Black);
         _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-
-        IVisible[] visibles = _cam.Visibles;
-
-        foreach (IVisible item in visibles)
-        {
-            Visit(item);
-        }
 
         _spriteBatch.End();
         base.Draw(gameTime);

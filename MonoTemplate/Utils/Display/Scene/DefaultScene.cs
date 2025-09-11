@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MonoTemplate.Utils.Display.Scene
 {
-    public class Scene
+    public abstract class DefaultScene
     {
-        public Scene() 
+        public DefaultScene() 
         { 
 
         }

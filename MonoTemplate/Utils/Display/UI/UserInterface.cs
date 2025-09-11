@@ -18,7 +18,7 @@ namespace MonoTemplate.Utils.Display.UI
         /// </summary>
         protected Pannel content;
 
-        protected UserInterface(Camera cam)
+        protected UserInterface()
         {
             displayUtils = DisplayUtils.Instance;
         }

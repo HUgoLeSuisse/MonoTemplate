@@ -7,7 +7,7 @@ using MonoTemplate.Utils.Display;
 
 namespace MonoTemplate;
 
-public class Main : Game, IVisibleVisitor
+public class Main : Game
 {
     private DisplayUtils displayUtils;
     private UpdateEvents events;
@@ -74,12 +74,9 @@ public class Main : Game, IVisibleVisitor
     {
         GraphicsDevice.Clear(Color.Black);
         _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-
+        _displayManager.Draw(_spriteBatch);
         _spriteBatch.End();
         base.Draw(gameTime);
     }
 
-    public void Visit(IVisible v)
-    {
-    }
 }

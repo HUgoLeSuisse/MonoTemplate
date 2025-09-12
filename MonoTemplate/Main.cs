@@ -40,7 +40,7 @@ public class Main : Game
         Color[] colorData = { Color.White };
         displayUtils.blank.SetData(colorData);
 
-        //displayUtils.defaultFont = Content.LoadLocalized<SpriteFont>("DefaultFont");
+        displayUtils.defaultFont = Content.LoadLocalized<SpriteFont>("defaultFont");
 
 
         _graphics.PreferredBackBufferWidth = displayUtils.width;
@@ -48,6 +48,8 @@ public class Main : Game
         _graphics.IsFullScreen = false;
 
         _graphics.ApplyChanges();
+
+        _displayManager = new DisplayManager(_spriteBatch);
 
     }
 
@@ -73,9 +75,7 @@ public class Main : Game
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.Black);
-        _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-        _displayManager.Draw(_spriteBatch);
-        _spriteBatch.End();
+        _displayManager.Draw();
         base.Draw(gameTime);
     }
 

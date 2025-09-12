@@ -31,6 +31,10 @@ namespace Monotemplate.Utils.Display
         /// la position et la taille de la caméra
         /// </summary>
         public Rectangle Rectangle { get { return rect; } set { rect = value; } }
+        /// <summary>
+        /// la position de la caméra 
+        /// </summary>
+        public Point Position { get { return rect.Location; } }
 
         public Camera()
         {

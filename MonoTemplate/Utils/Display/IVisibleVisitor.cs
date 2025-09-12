@@ -1,4 +1,5 @@
 ﻿using BuildAndDestroy.GameComponents.Utils;
+using MonoTemplate.Utils.Display.UI.Element;
 
 namespace Monotemplate.Utils.Display
 {
@@ -8,6 +9,8 @@ namespace Monotemplate.Utils.Display
     public interface IVisibleVisitor
     {
         public void Visit(IVisible v);
+        public void Visit(Pannel v);
+        public void Visit(Label v);
 
     }
 

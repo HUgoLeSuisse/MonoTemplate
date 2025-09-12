@@ -32,6 +32,8 @@ namespace MonoTemplate.Utils.Display.UI
         {
             return content;
         }
+
+
         public void Destroy()
         {
             content.Destroy();

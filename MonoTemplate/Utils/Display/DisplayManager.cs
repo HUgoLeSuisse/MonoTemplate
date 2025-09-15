@@ -15,16 +15,20 @@ namespace MonoTemplate.Utils.Display
 
         private SpriteBatch _spriteBatch;
         private Camera _cam;
-
+        private Main _main;
         private DefaultScene scene;
         private UserInterface ui;
 
-        public DisplayManager(SpriteBatch spriteBatch) 
+        public DisplayManager(SpriteBatch spriteBatch, Main main)
         {
+            _main = main;
             _spriteBatch = spriteBatch;
             _cam = new Camera(); 
             //scene = new DefaultScene();
-            ui = new Menu();
+            
+            Menu menu = new Menu();
+            ui = menu;
+            menu.Exit.onMouseUp += () => { _main.Exit(); };
         }
 
         public void Draw()
@@ -71,6 +75,34 @@ namespace MonoTemplate.Utils.Display
                 SpriteEffects.None,
                 1
                 );
+        }
+        public void Visit(Button v)
+        {
+
+            _spriteBatch.Draw(v.GetCurrentTexture(),
+                    v.GetAbsoluteRectangle(),
+                    v.GetCurrentColor());
+
+            Label label = v.label;
+
+            Point Size = label.Absoulute.Size;
+            Point c = v.Absoulute.Size;
+            int x = Size.X - c.X;
+            int y = Size.Y - c.Y;
+            Vector2 labelPos = new Vector2(x / 2, y / 2);
+            Vector2 labelTruePos = v.Absoulute.Location.ToVector2() - labelPos;
+            _spriteBatch.DrawString(
+                label.font,
+                label.text,
+                labelTruePos,
+                label.fontColor,
+                0,
+                Vector2.Zero,
+                label.GetFontSize(),
+                SpriteEffects.None,
+                1
+                );
+
         }
     }
 }

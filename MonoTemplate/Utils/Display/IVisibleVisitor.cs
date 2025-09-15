@@ -11,6 +11,7 @@ namespace Monotemplate.Utils.Display
         public void Visit(IVisible v);
         public void Visit(Pannel v);
         public void Visit(Label v);
+        public void Visit(Button v);
 
     }
 

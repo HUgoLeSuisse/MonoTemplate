@@ -49,6 +49,16 @@ namespace MonoTemplate.TestingClass
             Exit.yAlign = 0.7f;
             this.Start = Start;
             this.Exit = Exit;
+
+            Exit.onClick += (x) =>
+            {
+                Main.Instance.Exit();
+            };
+
+            Start.onClick += (x) =>
+            {
+                Main.Instance.DisplayManager.ChangeView(null,null);
+            };
         }
     }
 }

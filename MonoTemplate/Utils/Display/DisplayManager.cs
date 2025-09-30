@@ -15,20 +15,18 @@ namespace MonoTemplate.Utils.Display
 
         private SpriteBatch _spriteBatch;
         private Camera _cam;
-        private Main _main;
         private DefaultScene scene;
         private UserInterface ui;
 
-        public DisplayManager(SpriteBatch spriteBatch, Main main)
+        public DisplayManager(SpriteBatch spriteBatch)
         {
-            _main = main;
+
             _spriteBatch = spriteBatch;
             _cam = new Camera(); 
             //scene = new DefaultScene();
             
             Menu menu = new Menu();
             ui = menu;
-            menu.Exit.onMouseUp += () => { _main.Exit(); };
         }
 
         public void Draw()
@@ -102,6 +100,11 @@ namespace MonoTemplate.Utils.Display
                 SpriteEffects.None,
                 1
                 );
+
+        }
+
+        public void ChangeView(UserInterface userInterface, DefaultScene scene)
+        {
 
         }
     }

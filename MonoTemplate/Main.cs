@@ -9,24 +9,33 @@ namespace MonoTemplate;
 
 public class Main : Game
 {
-    private DisplayUtils displayUtils;
-    private UpdateEvents events;
+    private DisplayUtils _displayUtils;
+    private UpdateEvents _events;
     private DisplayManager _displayManager;
-
+    public DisplayManager DisplayManager { get { return _displayManager; } }
 
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
-    public Main()
+    private static Main _instance;
+    public static Main Instance { get 
+        {
+            if (_instance == null)
+            {
+                _instance = new Main();   
+            }
+            return _instance; }
+    }
+    private Main()
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
 
-        displayUtils = DisplayUtils.Instance;
-        displayUtils.width = 1200;
-        displayUtils.height = 800;
+        _displayUtils = DisplayUtils.Instance;
+        _displayUtils.width = 1200;
+        _displayUtils.height = 800;
 
-        events = UpdateEvents.Instance;
+        _events = UpdateEvents.Instance;
     }
 
     protected override void Initialize()
@@ -34,23 +43,23 @@ public class Main : Game
         base.Initialize();
         this.IsMouseVisible = true;
 
-        displayUtils.SetContent(Content);
+        _displayUtils.SetContent(Content);
 
-        displayUtils.blank = new Texture2D(GraphicsDevice, 1, 1);
+        _displayUtils.blank = new Texture2D(GraphicsDevice, 1, 1);
         Color[] colorData = { Color.White };
-        displayUtils.blank.SetData(colorData);
+        _displayUtils.blank.SetData(colorData);
 
-        displayUtils.defaultFont = Content.LoadLocalized<SpriteFont>("DefaultFont");
+        _displayUtils.defaultFont = Content.LoadLocalized<SpriteFont>("DefaultFont");
 
 
-        _graphics.PreferredBackBufferWidth = displayUtils.width;
-        _graphics.PreferredBackBufferHeight = displayUtils.height;
+        _graphics.PreferredBackBufferWidth = _displayUtils.width;
+        _graphics.PreferredBackBufferHeight = _displayUtils.height;
         _graphics.IsFullScreen = false;
         
         _graphics.ApplyChanges();
         
 
-        _displayManager = new DisplayManager(_spriteBatch,this);
+        _displayManager = new DisplayManager(_spriteBatch);
 
     }
 
@@ -66,8 +75,8 @@ public class Main : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        events.PreUpdate?.Invoke(gameTime);
-        events.Update?.Invoke(gameTime);
+        _events.PreUpdate?.Invoke(gameTime);
+        _events.Update?.Invoke(gameTime);
         base.Update(gameTime);
 
     }

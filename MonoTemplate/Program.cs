@@ -1,2 +1,2 @@
-﻿using var game = new MonoTemplate.Main();
+﻿using var game = MonoTemplate.Main.Instance;
 game.Run();
